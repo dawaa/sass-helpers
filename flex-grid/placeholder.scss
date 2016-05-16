@@ -1,0 +1,30 @@
+%column-width {
+  $size: sm;
+  $width: 0;
+
+  @for $i from 1 through 3 {
+    @if $i == 2 {
+      $size: md;
+      $width: 641px;
+    } @else if $i == 3 {
+      $size: lg;
+      $width: 1025px;
+    }
+
+    @media screen and (min-width: $width) {
+      @for $j from 1 through 12 {
+        &[flex*="#{$size}-#{$j}"] { width: calc(#{$j} / 12 * 100%); }
+      }
+    }
+  }
+}
+
+
+%flex-start {
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+}

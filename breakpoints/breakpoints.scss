@@ -1,0 +1,18 @@
+/**
+* Just know that we start from mobile
+* point-of-view.
+* Which means we will correct stuff from
+* tablet or desktop if necessary.
+*/
+
+@mixin breakpoint($point) {
+  @if $point == papa-bear {
+    @media (min-width: 1024px) { @content; }
+  }
+  @else if $point == mama-bear {
+    @media (max-width: 1024px) { @content; }
+  }
+  @else if $point == baby-bear {
+    @media (max-width: 640px)  { @content; }
+  }
+}
