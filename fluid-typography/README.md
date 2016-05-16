@@ -6,6 +6,10 @@ Holds a mixin which allows us to have a fluid typography using units such as:
 
 We can also set **min-font-size** and **max-font-size** with this mixin.
 
+
+
+
+
 ¡¡ **You'll want to import 'strip-units' to get this mixin working** !!
 
 ---
