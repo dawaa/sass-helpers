@@ -10,10 +10,12 @@ We can also set **min-font-size** and **max-font-size** with this mixin.
 
 ---
 
->@mixin fluid-type (
->    $properties, // can hold multiple props: 'margin-top padding-top'
->    $min-vw,     // min viewport width (can hold both **px** and **em**)
->    $max-vw,     // max viewport width (can hold both **px** and **em**)
->    $min-value,  // min value (can hold both **px** and **em**)
->    $max-value   // max value (can hold both **px** and **em**)
->  )
+````
+@mixin fluid-type (
+    $properties, // can hold multiple props: 'margin-top padding-top'
+    $min-vw,     // min viewport width (can hold both **px** and **em**)
+    $max-vw,     // max viewport width (can hold both **px** and **em**)
+    $min-value,  // min value (can hold both **px** and **em**)
+    $max-value   // max value (can hold both **px** and **em**)
+)
+````
