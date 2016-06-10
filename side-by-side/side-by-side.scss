@@ -1,0 +1,49 @@
+@mixin side-by-side($args...) {
+  $max: length(nth($args, 1));
+  
+  @for $i from 1 through $max {
+    $list: nth($args, 1);
+    $value: nth($list, $i);
+  
+    // if value is of type string and value
+    // is not 'calc' function
+    @if type_of($value) == 'string' and str-contains('calc', $value) == false {
+
+      // if not at the end of our list
+      @if $i != $max {
+
+        // if next value has a unit and is a number
+        $next-value: nth($list, $i + 1);
+        @if is-valid-length($next-value) and type-of($next-value) == 'number' or str-contains('calc', $next-value) {
+          #{$value} {
+            float: left;
+            width: #{$next-value};
+          }
+
+        // if its unitless
+        } @else {
+          #{$value} {
+            float: left;
+            width: 50%;
+          }
+        }
+
+
+      // if we at the end of our list and last value is
+      // not a number and does not contain 'calc'
+      } @else if str-contains('calc', $value) == false and type-of($value) != 'number' {
+        #{$value} {
+          float: left;
+          width: 50%;
+        }
+      }
+    }
+
+
+
+  }
+}
+
+@mixin sbs($args...) {
+  @include side-by-side($args...);
+}
