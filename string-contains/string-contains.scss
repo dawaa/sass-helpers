@@ -1,17 +1,27 @@
-@function str-contains($needle, $haystack) {
+@function str-contains($needle, $haystack, $case-sensitive: false) {
+  @if $case-sensitive {
+    $needle: to-lower-case($needle);
+    $haystack: to-lower-case($haystack);
+  }
+
   $length: str-length($needle);
   $hay-length: str-length($haystack);
 
   $result-string: "";
   $count: 1;
   $last-index: 0;
+  $beginning-of-string: true;
   
-  @for $i from 1 through $hay-length {
+  @for $i from 1 to ($hay-length + 1) {
     $letter: str-slice($haystack, $i, $i);
     $find: str-slice($needle, $count, $count);
+
+    @if $i > $length {
+        $beginning-of-string: false;
+    }
   
     @if $letter == $find {
-      @if $last-index != $i - 1 {
+      @if $last-index != $i - 1 and $beginning-of-string == true {
         @return false;
       }
       
